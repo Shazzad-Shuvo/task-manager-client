@@ -1,15 +1,30 @@
 import { FaHome } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import Board from "../components/Board/Board";
+import Task from "../components/Board/Task";
+import TaskBoard from "../components/TaskBoard/TaskBoard";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
+
+    const { user } = useAuth()
     return (
         <div className="flex">
             {/* dashboard sidebar */}
             <div className="flex flex-col justify-between pb-16 w-36 md:w-64 min-h-screen bg-gradient-to-b from-cyan-300/80 to-blue-500/80">
                 <ul className="menu p-4">
                     <div className="flex justify-center">
-                        <img className="w-48" src="https://i.ibb.co/tQV1SMG/Skill-sphere-removebg-preview.png" alt="" />
+                        {/* <img className="w-48" src={user.photoURL} alt="" /> */}
+                        {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
+                            <div className="w-12 md:w-20 rounded-full">
+                                
+                            </div>
+                        </label> */}
+                        <div className="avatar">
+                            <div className="w-8 md:w-24 rounded-full">
+                            <img src={user?.photoURL} />
+                            </div>
+                        </div>
                     </div>
                     <div className="divider"></div>
                     <li>
@@ -27,7 +42,9 @@ const Dashboard = () => {
             {/* dashboard content */}
             <div className="flex-1 md:p-8">
                 {/* <Outlet></Outlet> */}
-                <Board/>
+
+                {/* <Board/> */}
+                <TaskBoard></TaskBoard>
             </div>
         </div>
     );
