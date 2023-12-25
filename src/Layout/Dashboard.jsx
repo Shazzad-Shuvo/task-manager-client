@@ -1,13 +1,21 @@
-import { FaHome } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
-import Board from "../components/Board/Board";
-import Task from "../components/Board/Task";
-import TaskBoard from "../components/TaskBoard/TaskBoard";
+import { FaHome, FaThList } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
 
-    const { user } = useAuth()
+    const { user, logOut } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { 
+                navigate('/');
+            })
+            .catch(error => console.log(error))
+    }
+
     return (
         <div className="flex">
             {/* dashboard sidebar */}
@@ -22,7 +30,7 @@ const Dashboard = () => {
                         </label> */}
                         <div className="avatar">
                             <div className="w-8 md:w-24 rounded-full">
-                            <img src={user?.photoURL} />
+                                <img src={user?.photoURL} />
                             </div>
                         </div>
                     </div>
@@ -33,18 +41,25 @@ const Dashboard = () => {
                             Home
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to='/dashboard/tasks'>
+                            <FaThList></FaThList>
+                            My Tasks
+                        </NavLink>
+                    </li>
                 </ul>
-                {/* <ul className="menu p-4">
-                    <li onClick={handleLogOut}><Link><MdLogout className="text-xl"></MdLogout> Log Out</Link></li>
-                </ul> */}
+                <ul className="menu p-4">
+                    <li onClick={handleLogOut}>
+                        <Link>
+                            <MdLogout className="text-xl"></MdLogout> Log Out
+                        </Link>
+                    </li>
+                </ul>
             </div>
 
             {/* dashboard content */}
             <div className="flex-1 md:p-8">
-                {/* <Outlet></Outlet> */}
-
-                {/* <Board/> */}
-                <TaskBoard></TaskBoard>
+                <Outlet></Outlet>
             </div>
         </div>
     );

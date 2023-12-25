@@ -3,9 +3,10 @@ import "./scroll.css"
 import Task from './Task';
 
 
-const Column = ({ title, tasks, id }) => {
+const Column = ({ todosList, title, tasks, id }) => {
+    // console.log(todosList);
     return (
-        <div className='bg-gray-200 rounded-lg p-3 w-64  overflow-y-scroll column'>
+        <div className='bg-gray-200 rounded-lg p-3 w-[270px] overflow-y-scroll column'>
             <h2 className='sticky px-8 py-2 text-center rounded-lg font-semibold bg-cyan-200 '>{title}</h2>
             <Droppable droppableId={id}>
                 {(provided, snapshot) => (
@@ -17,8 +18,8 @@ const Column = ({ title, tasks, id }) => {
                     >
                         {/* Provide your tasks */}
 
-                        <Task task={{id:123, title: "Make a progress board"}} index="1"/>
-
+                        <Task todosList={todosList} task={{id:123, title: "Make a progress board"}} index="1"/>
+                        
                         {provided.placeholder}
                     </div>
                 )

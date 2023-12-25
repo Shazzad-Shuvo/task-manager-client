@@ -9,8 +9,8 @@ const PrivateRoute = ({ children }) => {
     console.log(location);
 
     if(loading) {
-        return <div className="flex justify-center items-center my-20">
-            <PulseLoader color="#36d1d6" size={120}/>
+        return <div className="flex justify-center items-center my-40">
+            <PulseLoader color="#36d1d6" size={30}/>
         </div>
     }
     if(user){

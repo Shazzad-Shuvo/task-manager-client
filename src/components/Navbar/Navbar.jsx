@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 
@@ -8,16 +8,19 @@ const Navbar = () => {
     const [mobNav, setMobNav] = useState(false);
     const handleClick = () => setMobNav(!mobNav);
     const { user, logOut } = useAuth();
+    const navigate = useNavigate();
 
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                navigate('/');
+             })
             .catch(error => console.log(error))
     }
 
     const navLinks = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/dashboard/tasks">Dashboard</Link></li>
         <li><Link to="/about">About Us</Link></li>
     </>
 

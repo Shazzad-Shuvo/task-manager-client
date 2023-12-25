@@ -18,20 +18,34 @@ const Board = () => {
             })
     }, [])
 
-    const handleDragEnd = (result) =>{
-        const {destination, source, draggableId} = result;
+    const handleDragEnd = (result) => {
+        const { destination, source, draggableId } = result;
 
-        if(source.droppableId === destination.droppableId) return;
+        if (source.droppableId === destination.droppableId) return;
     }
 
 
     return (
-        <DragDropContext onDragEnd={handleDragEnd}>
-            <h2 className='text-center'>Task Board</h2>
-            <div className='flex flex-row justify-between items-center'>
-                <Column title={"To-Do"} tasks={"Incomplete"} id={"1"} />
-            </div>
-        </DragDropContext>
+        <div>
+            <DragDropContext onDragEnd={handleDragEnd}>
+                <h2 className='text-center'>Task Board</h2>
+                <div className='flex flex-row justify-between items-center'>
+                    <Column title={"To-Do"} tasks={"Incomplete"} id={"1"} />
+                </div>
+            </DragDropContext>
+            <DragDropContext onDragEnd={handleDragEnd}>
+                <h2 className='text-center'>Task Board</h2>
+                <div className='flex flex-row justify-between items-center'>
+                    <Column title={"To-Do"} tasks={"Incomplete"} id={"1"} />
+                </div>
+            </DragDropContext>
+            <DragDropContext onDragEnd={handleDragEnd}>
+                <h2 className='text-center'>Task Board</h2>
+                <div className='flex flex-row justify-between items-center'>
+                    <Column title={"To-Do"} tasks={"Incomplete"} id={"1"} />
+                </div>
+            </DragDropContext>
+        </div>
     );
 };
 
