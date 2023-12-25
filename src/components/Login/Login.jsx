@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import 'animate.css';
 import { useForm } from "react-hook-form";
+import GithubLogin from "../GithubLogin/GithubLogin";
 
 const Login = () => {
 
@@ -103,6 +104,7 @@ const Login = () => {
                             </div>
                         </form>
                         <SocialLogin></SocialLogin>
+                        <GithubLogin></GithubLogin>
                     </div>
                 </div>
             </div>

@@ -1,23 +1,22 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-const SocialLogin = () => {
-
+const GithubLogin = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
     console.log('State in the location login page:', location.state);
 
-    const { signInWithGoogle } = useAuth();
+    const { signInWithGithub } = useAuth();
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
+    const handleGithubSignIn = () => {
+        signInWithGithub()
             .then(result => {
                 const user = result.user;
-                console.log('google sign in of:', user);
+                console.log('github sign in of:', user);
 
                 Swal.fire({
                     icon: "success",
@@ -50,15 +49,14 @@ const SocialLogin = () => {
 
     return (
         <div className="px-8 pb-8">
-            <div className="divider">Or</div>
             <div>
-                <button onClick={handleGoogleSignIn} className="btn w-full">
-                    <FcGoogle className="text-2xl"></FcGoogle>
-                    Sign in with Google
+                <button onClick={handleGithubSignIn} className="btn w-full">
+                    <FaGithub className="text-2xl"></FaGithub>
+                    Sign in with Github
                 </button>
             </div>
         </div>
     );
 };
 
-export default SocialLogin;
+export default GithubLogin;
