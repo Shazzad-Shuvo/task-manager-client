@@ -8,6 +8,7 @@ import About from "../components/About/About";
 import PrivateRoute from "./PrivateRoute";
 import TaskBoard from "../components/TaskBoard/TaskBoard";
 import UpdateTask from "../components/UpdateTask/UpdateTask";
+import UserProfile from "../components/UserProfile/UserProfile";
 
 
 
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       path: "/dashboard",
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+        {
+          path: "profile",
+          element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
+        },
         {
           path: "tasks",
           element: <PrivateRoute><TaskBoard></TaskBoard></PrivateRoute>

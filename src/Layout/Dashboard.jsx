@@ -1,4 +1,5 @@
 import { FaHome, FaThList } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 import { MdLogout } from "react-icons/md";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
@@ -10,7 +11,7 @@ const Dashboard = () => {
 
     const handleLogOut = () => {
         logOut()
-            .then(() => { 
+            .then(() => {
                 navigate('/');
             })
             .catch(error => console.log(error))
@@ -22,12 +23,6 @@ const Dashboard = () => {
             <div className="flex flex-col justify-between pb-16 w-36 md:w-64 min-h-screen bg-gradient-to-b from-cyan-300/80 to-blue-500/80">
                 <ul className="menu p-4">
                     <div className="flex justify-center">
-                        {/* <img className="w-48" src={user.photoURL} alt="" /> */}
-                        {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
-                            <div className="w-12 md:w-20 rounded-full">
-                                
-                            </div>
-                        </label> */}
                         <div className="avatar">
                             <div className="w-8 md:w-24 rounded-full">
                                 <img src={user?.photoURL} />
@@ -36,15 +31,21 @@ const Dashboard = () => {
                     </div>
                     <div className="divider"></div>
                     <li>
-                        <NavLink to='/'>
-                            <FaHome></FaHome>
-                            Home
+                        <NavLink to='/dashboard/profile'>
+                            <CgProfile></CgProfile>
+                            Profile
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to='/dashboard/tasks'>
                             <FaThList></FaThList>
                             My Tasks
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/'>
+                            <FaHome></FaHome>
+                            Home
                         </NavLink>
                     </li>
                 </ul>
